@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<project name="webdemo" default="ear">
+	<path id="compile.classpath">
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="WebContent/WEB-INF/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	<target name="clean">
+		<delete dir="WebContent/WEB-INF/classes"/>
+		<delete file="webdemo.war"/>
+		<delete>
+			<fileset dir="." includes="**/*.ear"/>
+		</delete>
+	</target>
+	<target name="init" depends="clean">
+		<mkdir dir="buildAnt/classes" />
+		<mkdir dir="dist" />
+	</target>
+	<target name="compile" depends="init">
+		<javac destdir="buildAnt/classes" debug="true" srcdir="src" source="1.6" target="1.6">
+			<classpath refid="compile.classpath" />
+		</javac>
+		<copy todir="buildAnt/classes" overwrite="true">
+			<fileset dir="src">
+				<include name="*.xml" />
+				<include name="*.properties" />
+				<include name="*.png" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="war" depends="compile">
+		<war destfile="webdemo.war" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="WebContent" />
+			<classes dir="buildAnt/classes" />
+		</war>
+	</target>
+	<target name="ear" depends="war">
+		<ear destfile="webdemo.ear" appxml="resources/application.xml">
+			<fileset dir="." includes="webdemo.war" />
+		</ear>
+	</target>
+</project>
