@@ -146,7 +146,7 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
    echo "[EXEC] - Almacenando artefactos en Artifactory Server"
    /*
    def server = Artifactory.server "https://lramirezq.jfrog.io/lramirezq/"
-   */
+   
    def uploadSpec = """
    {
     "files": [{
@@ -160,7 +160,7 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
    server.publishBuildInfo buildInfo1
 
   }
-
+*/
   /*
 La fase de deploy lleva los fuentes hasta Urban Code para ser instalados en el servidor que se requiera.
 
