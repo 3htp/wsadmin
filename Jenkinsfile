@@ -17,7 +17,7 @@ ${DEV_BRANCH}: Corresponde con el branch developer -> Para desarrollo
 ${INT_BRANCH}: Corresponde con el branch certification -> Para certificación interna
 ${REL_BRANCH}: Corresponde con el branch master -> Para producción
  */
- def SCM_BRANCH = "${DEV_BRANCH}";
+ def SCM_BRANCH = "master";
 
  /*
 def SCM_CREDENTIALS="ID_CREDENCIAL";
