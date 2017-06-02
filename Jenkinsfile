@@ -144,7 +144,7 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
 
   stage('ARTIFACT_UP') {
    echo "[EXEC] - Almacenando artefactos en Artifactory Server"
-   def server = Artifactory.server "${ARTIFACTORY_SERVER}"
+   def server = Artifactory.server "https://lramirezq.jfrog.io/lramirezq/"
    def uploadSpec = """
    {
     "files": [{
