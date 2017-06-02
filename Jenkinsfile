@@ -7,9 +7,9 @@ node {
 def SONAR = tool "${SONAR_VERSION}";
 ${SONAR_VERSION}: Corresponde con una variable de entorno, que de momento especifica la versión 2.8 de Sonar Scanner.
      
- */
- def SONAR = tool "${SONAR_VERSION}";
 
+ def SONAR = tool "${SONAR_VERSION}";
+ */
  /*
 Especificar el branch desde el cual se descargará el código fuente, con base en 3 variables de entorno diferentes:
 
@@ -27,7 +27,7 @@ Se debe especificar la credencial creada dentro del vault de credenciales de jen
 Es importante destacar que el parametro que debe ser especificado corresponde con el ID y no con información sensible del usuario.
      
  */
- def SCM_CREDENTIALS = "CREDENCIAL_ALMACENADA_EN_VAULT_JENKINS";
+ def SCM_CREDENTIALS = "cef486f3-a2d8-496a-81da-283713cf23de";
 
  /*
 def SCM_URL="Especificar la url del proyecto git al cual se armará la arquitectura de integración continua."
@@ -37,7 +37,7 @@ def SCM_URL="Especificar la url del proyecto git al cual se armará la arquitect
  /*
 def PROJECT="Especificar el nombre del proyecto IIB", sin espacio, ñÑs o caracteres especiales. Es sensible a mayúsculas y minúsculas y no se recomienda que tenga tíldes.
  */
- def PROJECT = "NOMBRE_PROYECTO";
+ def PROJECT = "Prueba_Integracion";
 
  /*
 Especificar el paquete del proyecto, la forma de construir es por directorios similares a los paquetes java.
@@ -49,7 +49,7 @@ Es importante el manejo de paquetes, porque de acuerdo con ello será registrada
  /*
      Especificar el nombre del módulo principal que será compilado en IIB.
  */
- def MAIN_MODULE = "HTTPJavaEchoApp"
+ def MAIN_MODULE = "build.xml"
 
  /*
 Especificar con base en el módulo principal el archivo msgflow que será compilado.
@@ -77,10 +77,10 @@ def FILE_EXCLUDE_PATTERN="Se especifican los archivos a excluir, también por ex
 
 def UCD_BASEDIR="Especifica la ruta desde la cual se leerán los archivos que serán enviados a Urban Code Deploy para el proceso de despliegue.";
  */
- def UCD_COMPONENT = "IIB";
- def UCD_APPLICATION = "IIB";
+ def UCD_COMPONENT = "WASLRQ";
+ def UCD_APPLICATION = "AppWAS_LRQ";
  def UCD_ENVIRONMENT = "Desarrollo";
- def UCD_PROCESS = "deploy";
+ def UCD_PROCESS = "InstallWAS";
  def FILE_PATTERN = "*.bar\n*.sh\n*.DEF";
  def FILE_EXCLUDE_PATTERN = "";
  def UCD_BASEDIR = "${workspace}";
