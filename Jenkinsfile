@@ -158,9 +158,9 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
 
    def buildInfo1 = server.upload spec: uploadSpec
    server.publishBuildInfo buildInfo1
-
-  }
 */
+  }
+
   /*
 La fase de deploy lleva los fuentes hasta Urban Code para ser instalados en el servidor que se requiera.
 
