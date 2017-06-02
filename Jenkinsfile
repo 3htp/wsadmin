@@ -32,7 +32,7 @@ Es importante destacar que el parametro que debe ser especificado corresponde co
  /*
 def SCM_URL="Especificar la url del proyecto git al cual se armará la arquitectura de integración continua."
  */
- def SCM_URL = "http://git.techandsolve.com/devops/pipeline-iib.git";
+ def SCM_URL = "https://github.com/3htp/webdemo.git";
 
  /*
 def PROJECT="Especificar el nombre del proyecto IIB", sin espacio, ñÑs o caracteres especiales. Es sensible a mayúsculas y minúsculas y no se recomienda que tenga tíldes.
