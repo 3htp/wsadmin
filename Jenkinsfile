@@ -122,7 +122,7 @@ La idea con la anterior es respetar el esquema de ramas y con base en ello asegu
    ]);
   }
 
-/*La fase de compilación de código fuente se encarga de generar los binarios.*/
+/*La fase de compilación de código fuente se encarga de generar los binarios.
 
 stage('BUILD_CODE') {
    echo "[EXEC] - Compilación y empaquetado de codigo fuente ";
@@ -130,14 +130,14 @@ stage('BUILD_CODE') {
    sh "DISPLAY=:100 ${MQSICREATEBAR} -data ${workspace}/source -b ${PROJECT}.bar -p '${MAIN_MODULE}' -o '${MAIN_FILE}' -trace";
    sh "chmod a+x -R *.bar"
   }
-
-/*La fase de análisis estático de código, contempla llevar los fuentes generados durante la construcción del proyecto a la herramienta sonarqube, para validar una serie de métricas que permita evidenciar estados de calidad del proyecto.*/
+*/
+/*La fase de análisis estático de código, contempla llevar los fuentes generados durante la construcción del proyecto a la herramienta sonarqube, para validar una serie de métricas que permita evidenciar estados de calidad del proyecto.
 
   stage('CODE_ANA') {
    echo "[EXEC] - Analisis estatico de codigo"
    sh "${SONAR}/bin/sonar-scanner -e -Dsonar.login=${SONAR_TOKEN} -Dsonar.host.url=${SONAR_URL} -Dsonar.projectKey=${PROJECT} -Dsonar.projectName=${PROJECT} -Dsonar.projectVersion=${BUILD_ID} -Dsonar.sources=.";
   }
-
+*/
   /*
 La siguiente fase se encarga del almacenamiento de artefactos o binarios en la herramienta Artifactory, con lo cual se lleva un registro histórico de los artefactos generados.
   */
