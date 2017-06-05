@@ -98,7 +98,7 @@ La idea con la anterior es respetar el esquema de ramas y con base en ello asegu
 // -- Compilando
 stage('Compilar en ant') {
    echo 'Compilando aplicación'
-   sh """cd /var/jenkins/workspace/MULTIPIPE_EJEMPLO_master-DQ4FMBGGN7DSFPJDBDGFOB7PMNTO3O24L32A34ZITVZ5LSGYPVFA/source
+   sh """cd source
    touch ${PROJECT}.txt"""
   } 
     /*
