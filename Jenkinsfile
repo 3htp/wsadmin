@@ -96,9 +96,11 @@ La idea con la anterior es respetar el esquema de ramas y con base en ello asegu
   }
 
 // -- Compilando
+stage('Compilar en ant') {
    echo 'Compilando aplicación'
    sh 'cd source'
-
+   sh 'ant'
+}
   /*
 La siguiente fase se encarga del almacenamiento de artefactos o binarios en la herramienta Artifactory, con lo cual se lleva un registro histórico de los artefactos generados.
   */
