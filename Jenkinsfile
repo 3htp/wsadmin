@@ -93,7 +93,7 @@ master: Corresponde con la rama que presenta los fuentes para el ambiente produc
     
 La idea con la anterior es respetar el esquema de ramas y con base en ello asegurar las fases de entrega para los proyectos.
   */
-  stage('GET_CODE') {
+  stage('Obtener_codigo') {
    sh "rm -rf ${workspace}/*";
    echo "[EXEC] - Obtener codigo fuente desde repositorio Git";
    checkout([
@@ -138,7 +138,7 @@ stage('BUILD_CODE') {
 La siguiente fase se encarga del almacenamiento de artefactos o binarios en la herramienta Artifactory, con lo cual se lleva un registro histórico de los artefactos generados.
   */
 
-  stage('ARTIFACT_UP') {
+  stage('Guardar_en_Artifactory') {
    echo "[EXEC] - Almacenando artefactos en Artifactory Server"
    /*
    def server = Artifactory.server "https://lramirezq.jfrog.io/lramirezq/"
@@ -146,7 +146,7 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
    def uploadSpec = """
    {
     "files": [{
-     "pattern": "${workspace}/${PROJECT}.bar",
+     "pattern": "${workspace}/${PROJECT}.ear",
      "target": "${ARTIFACTORY_SNAPSHOT}/${PACKAGE}/${PREFIX_VERSION}.${BUILD_ID}/"
     }]
    }
