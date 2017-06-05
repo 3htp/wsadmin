@@ -98,12 +98,10 @@ La idea con la anterior es respetar el esquema de ramas y con base en ello asegu
 // -- Compilando
 stage('Compilar en ant') {
    echo 'Compilando aplicación'
-   sh ""cd /var/jenkins/workspace/MULTIPIPE_EJEMPLO_master-DQ4FMBGGN7DSFPJDBDGFOB7PMNTO3O24L32A34ZITVZ5LSGYPVFA/source
+   sh """cd /var/jenkins/workspace/MULTIPIPE_EJEMPLO_master-DQ4FMBGGN7DSFPJDBDGFOB7PMNTO3O24L32A34ZITVZ5LSGYPVFA/source
    touch ${PROJECT}.txt"""
-   
-  
-}
-  /*
+  } 
+    /*
 La siguiente fase se encarga del almacenamiento de artefactos o binarios en la herramienta Artifactory, con lo cual se lleva un registro histórico de los artefactos generados.
   */
 
