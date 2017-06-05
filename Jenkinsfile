@@ -29,7 +29,7 @@ def SCM_URL="Especificar la url del proyecto git al cual se armará la arquitect
  /*
 def PROJECT="Especificar el nombre del proyecto IIB", sin espacio, ñÑs o caracteres especiales. Es sensible a mayúsculas y minúsculas y no se recomienda que tenga tíldes.
  */
- def PROJECT = "Prueba_Integracion";
+ def PROJECT = "MULTIPIPE_EJEMPLO";
 
 
  /*
@@ -114,7 +114,7 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
    def uploadSpec = """
    {
     "files": [{
-     "pattern": "${workspace}/${PROJECT}.ear",
+     "pattern": "${workspace}/*.ear",
      "target": "example-repo-local"
     }]
    }
