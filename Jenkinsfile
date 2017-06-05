@@ -1,11 +1,7 @@
 node {
 
 
- /*
-  Se debe definir el motor de sonarqube que ejecutara el análisis estático de código a partir de la siguiente línea de texto.
 
-
- */
  /*
 Especificar el branch desde el cual se descargará el código fuente, con base en 3 variables de entorno diferentes:
 
@@ -35,23 +31,6 @@ def PROJECT="Especificar el nombre del proyecto IIB", sin espacio, ñÑs o carac
  */
  def PROJECT = "Prueba_Integracion";
 
- /*
-Especificar el paquete del proyecto, la forma de construir es por directorios similares a los paquetes java.
-
-Es importante el manejo de paquetes, porque de acuerdo con ello será registrada la aplicación en Artifactory.
- */
- def PACKAGE = "co/com/proteccion/${PROJECT}"
-
- /*
-     Especificar el nombre del módulo principal que será compilado en IIB.
- */
- def MAIN_MODULE = "build.xml"
-
- /*
-Especificar con base en el módulo principal el archivo msgflow que será compilado.
- */
- def MAIN_FILE = "${MAIN_MODULE}/main.msgflow"
-
 
  /*
 Las siguientes propiedades a especificar corresponde con información exclusiva para el despliegue del(os) .bar generados en Urban Code Deploy.
@@ -77,8 +56,6 @@ def UCD_BASEDIR="Especifica la ruta desde la cual se leerán los archivos que se
  def UCD_APPLICATION = "AppWAS_LRQ";
  def UCD_ENVIRONMENT = "Desarrollo";
  def UCD_PROCESS = "InstallWAS";
- def FILE_PATTERN = "*.bar\n*.sh\n*.DEF";
- def FILE_EXCLUDE_PATTERN = "";
  def UCD_BASEDIR = "${workspace}";
 
  dir("${workspace}") {
@@ -118,22 +95,8 @@ La idea con la anterior es respetar el esquema de ramas y con base en ello asegu
    ]);
   }
 
-/*La fase de compilación de código fuente se encarga de generar los binarios.
 
-stage('BUILD_CODE') {
-   echo "[EXEC] - Compilación y empaquetado de codigo fuente ";
-   sh "Xvfb :100 &";
-   sh "DISPLAY=:100 ${MQSICREATEBAR} -data ${workspace}/source -b ${PROJECT}.bar -p '${MAIN_MODULE}' -o '${MAIN_FILE}' -trace";
-   sh "chmod a+x -R *.bar"
-  }
-*/
-/*La fase de análisis estático de código, contempla llevar los fuentes generados durante la construcción del proyecto a la herramienta sonarqube, para validar una serie de métricas que permita evidenciar estados de calidad del proyecto.
 
-  stage('CODE_ANA') {
-   echo "[EXEC] - Analisis estatico de codigo"
-   sh "${SONAR}/bin/sonar-scanner -e -Dsonar.login=${SONAR_TOKEN} -Dsonar.host.url=${SONAR_URL} -Dsonar.projectKey=${PROJECT} -Dsonar.projectName=${PROJECT} -Dsonar.projectVersion=${BUILD_ID} -Dsonar.sources=.";
-  }
-*/
   /*
 La siguiente fase se encarga del almacenamiento de artefactos o binarios en la herramienta Artifactory, con lo cual se lleva un registro histórico de los artefactos generados.
   */
@@ -147,7 +110,7 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
    {
     "files": [{
      "pattern": "${workspace}/${PROJECT}.ear",
-     "target": "Repo_pipeline"
+     "target": "example-repo-local"
     }]
    }
    """
