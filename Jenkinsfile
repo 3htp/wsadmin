@@ -56,7 +56,10 @@ def UCD_BASEDIR="Especifica la ruta desde la cual se leerán los archivos que se
  def UCD_APPLICATION = "AppWAS_LRQ";
  def UCD_ENVIRONMENT = "Desarrollo";
  def UCD_PROCESS = "InstallWAS";
+  def FILE_PATTERN = "*.ear\n*.sh\n*.DEF";
+ def FILE_EXCLUDE_PATTERN = "";
  def UCD_BASEDIR = "${workspace}";
+ 
 
  dir("${workspace}") {
 
@@ -159,7 +162,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
       $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
       pushVersion: "${BUILD_ID}",
       baseDir: "${workspace}",
-      fileIncludePatterns: "webdemo.ear",
+      fileIncludePatterns: "${FILE_PATTERN}",
       fileExcludePatterns: '',
       pushProperties: '',
       pushDescription: 'Pushed from Jenkins',
