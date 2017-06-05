@@ -147,7 +147,7 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
    {
     "files": [{
      "pattern": "${workspace}/${PROJECT}.ear",
-     "target": "example-repo-local"
+     "target": "Repo_pipeline"
     }]
    }
    """
