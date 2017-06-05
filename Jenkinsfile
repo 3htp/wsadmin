@@ -157,7 +157,7 @@ writeFile file: 'deploy.sh', text: "mqsideploy IIBDESA -e SVR_AFP -a ${PROJECT}.
       $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
       pushVersion: "${BUILD_ID}",
       baseDir: "${workspace}",
-      fileIncludePatterns: "${FILE_PATTERN}",
+      fileIncludePatterns: "webdemo.ear",
       fileExcludePatterns: '',
       pushProperties: '',
       pushDescription: 'Pushed from Jenkins',
