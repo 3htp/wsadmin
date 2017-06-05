@@ -135,7 +135,7 @@ Los UCD_PARAMETERS son proporcionados por el equipo de infraestructura, sin emba
     
   */
 
-  stage("DEPLOY") {
+  stage("Despliegue") {
    echo "[EXEC] - Construyendo script de despliegue";
 
 /*
@@ -143,13 +143,13 @@ Notese que se está construyendo el código deploy.sh, mismo desarrollado actual
 
 La idea es que o bien se escriba por código los pasos que debe ejecutar Urban Code Deploy para los procesos de despliegue o que se proporcione el archivo deploy.sh a la par de los fuentes.
 
+*/
 
 writeFile file: 'deploy.sh', text: "mqsideploy IIBDESA -e SVR_AFP -a ${PROJECT}.bar -w 1200;"
 
    echo "[EXEC] - Despliegue sobre Urban Code Deploy ";
    step([
     $class: 'UCDeployPublisher',
-    siteName: 'UCD_VOSTPMDE12',
     component: [
      $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
      componentName: "${UCD_COMPONENT}",
@@ -177,7 +177,7 @@ writeFile file: 'deploy.sh', text: "mqsideploy IIBDESA -e SVR_AFP -a ${PROJECT}.
      deployOnlyChanged: false
     ]
    ])
-   */
+   
   }
  }
 }
