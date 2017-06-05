@@ -151,7 +151,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
    
    step([
     $class: 'UCDeployPublisher',
-    siteName: 'UrbanCode',
+    siteName: 'https://urbancode.lramirez.cl:8443',
     component: [
      $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
      componentName: "${UCD_COMPONENT}",
