@@ -99,7 +99,7 @@ La idea con la anterior es respetar el esquema de ramas y con base en ello asegu
 stage('Compilar en ant') {
    echo 'Compilando aplicación'
    sh 'cd source;
-       sh ant;'
+      ant;'
    
   
 }
