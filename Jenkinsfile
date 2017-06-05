@@ -148,8 +148,10 @@ La idea es que o bien se escriba por código los pasos que debe ejecutar Urban C
 writeFile file: 'deploy.sh', text: "mqsideploy IIBDESA -e SVR_AFP -a ${PROJECT}.ear -w 1200;"
 
    echo "[EXEC] - Despliegue sobre Urban Code Deploy ";
+   
    step([
     $class: 'UCDeployPublisher',
+    siteName: 'UrbanCode',
     component: [
      $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
      componentName: "${UCD_COMPONENT}",
