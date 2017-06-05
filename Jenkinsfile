@@ -4,11 +4,7 @@ node {
  /*
   Se debe definir el motor de sonarqube que ejecutara el análisis estático de código a partir de la siguiente línea de texto.
 
-def SONAR = tool "${SONAR_VERSION}";
-${SONAR_VERSION}: Corresponde con una variable de entorno, que de momento especifica la versión 2.8 de Sonar Scanner.
-     
 
- def SONAR = tool "${SONAR_VERSION}";
  */
  /*
 Especificar el branch desde el cual se descargará el código fuente, con base en 3 variables de entorno diferentes:
@@ -177,7 +173,7 @@ Los UCD_PARAMETERS son proporcionados por el equipo de infraestructura, sin emba
 Notese que se está construyendo el código deploy.sh, mismo desarrollado actualmente por el equipo de integración para entregar los binarios al equipo de infraestructura.
 
 La idea es que o bien se escriba por código los pasos que debe ejecutar Urban Code Deploy para los procesos de despliegue o que se proporcione el archivo deploy.sh a la par de los fuentes.
-*/
+
 
 writeFile file: 'deploy.sh', text: "mqsideploy IIBDESA -e SVR_AFP -a ${PROJECT}.bar -w 1200;"
 
@@ -212,6 +208,7 @@ writeFile file: 'deploy.sh', text: "mqsideploy IIBDESA -e SVR_AFP -a ${PROJECT}.
      deployOnlyChanged: false
     ]
    ])
+   */
   }
  }
 }
