@@ -100,7 +100,7 @@ stage('Compilar en ant') {
    echo 'Compilando aplicación'
    
    sh """cd source
-   touch creadoahora.txt"""
+   ant"""
   
   } 
     /*
