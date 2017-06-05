@@ -98,8 +98,8 @@ La idea con la anterior es respetar el esquema de ramas y con base en ello asegu
 // -- Compilando
 stage('Compilar en ant') {
    echo 'Compilando aplicación'
-   sh 'cd source;
-      ant;'
+   sh "cd source;
+       ant;"
    
   
 }
