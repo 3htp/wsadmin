@@ -151,7 +151,7 @@ La idea es que o bien se escriba por código los pasos que debe ejecutar Urban C
 writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
 
    echo "[EXEC] - Despliegue sobre Urban Code Deploy ";
-   
+   /*
    step([$class: 'UCDeployPublisher',
     siteName: 'https://urbancode.lramirez.cl:8443',
     component: [
@@ -186,7 +186,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
      deployOnlyChanged: false
     ]
    ])
-   
+   */
   }
  }
 }
