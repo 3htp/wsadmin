@@ -149,7 +149,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
      componentName: "${UCD_COMPONENT}",
      delivery: [
       $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
-      pushVersion: "${BUILD_ID}",
+      pushVersion: "CER${BUILD_ID}",
       baseDir: "${workspace}",
       fileIncludePatterns: "${FILE_PATTERN}",
       fileExcludePatterns: '',
