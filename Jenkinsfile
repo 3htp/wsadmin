@@ -157,11 +157,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
         component: [
             $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
             componentName: 'WASLRQ',
-            createComponent: [
-                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
-                componentTemplate: '',
-                componentApplication: 'AppWAS_LRQ'
-            ],
+            
             delivery: [
                 $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
                 pushVersion: '${BUILD_NUMBER}',
