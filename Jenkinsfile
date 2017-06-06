@@ -52,6 +52,7 @@ def FILE_EXCLUDE_PATTERN="Se especifican los archivos a excluir, también por ex
 
 def UCD_BASEDIR="Especifica la ruta desde la cual se leerán los archivos que serán enviados a Urban Code Deploy para el proceso de despliegue.";
  */
+ 
  def UCD_COMPONENT = "WASLRQ";
  def UCD_APPLICATION = "AppWAS_LRQ";
  def UCD_ENVIRONMENT = "Desarrollo";
