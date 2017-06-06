@@ -153,7 +153,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
    echo "[EXEC] - Despliegue sobre Urban Code Deploy ";
    
    step([$class: 'UCDeployPublisher',
-        siteName: 'local',
+        siteName: 'UrbanCode',
         component: [
             $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
             componentName: 'WASLRQ',
@@ -166,7 +166,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
                 $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
                 pushVersion: '${BUILD_NUMBER}',
                 baseDir: '${workspace}',
-                fileIncludePatterns: '*.ear',
+                fileIncludePatterns: '',
                 fileExcludePatterns: '',
                 pushProperties: '',
                 pushDescription: 'Pushed from Jenkins',
