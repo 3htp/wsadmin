@@ -56,7 +56,7 @@ def UCD_BASEDIR="Especifica la ruta desde la cual se leerán los archivos que se
  def UCD_APPLICATION = "AppWAS_LRQ";
  def UCD_ENVIRONMENT = "Desarrollo";
  def UCD_PROCESS = "InstallWAS";
-  def FILE_PATTERN = "*.ear\n*.sh\n*.DEF";
+ def FILE_PATTERN = "*.ear\n*.sh\n*.DEF";
  def FILE_EXCLUDE_PATTERN = "";
  def UCD_BASEDIR = "${workspace}";
  
@@ -151,26 +151,7 @@ La idea es que o bien se escriba por código los pasos que debe ejecutar Urban C
 writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
 
    echo "[EXEC] - Despliegue sobre Urban Code Deploy ";
-   /*
-   step([$class: 'UCDeployPublisher',
-        siteName: 'UrbanCode',
-        component: [
-            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-            componentName: 'WASLRQ',
-            
-            delivery: [
-                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
-                pushVersion: '${BUILD_NUMBER}',
-                baseDir: "${workspace}",
-                fileIncludePatterns: '',
-                fileExcludePatterns: '',
-                pushProperties: '',
-                pushDescription: 'Pushed from Jenkins',
-                pushIncremental: false
-            ]
-        ]
-    ])
-   */
+
    step([
     $class: 'UCDeployPublisher',
     siteName: 'UrbanCode',
@@ -181,7 +162,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
       $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
       pushVersion: "${BUILD_ID}",
       baseDir: "${workspace}",
-      fileIncludePatterns: '',
+      fileIncludePatterns: "${FILE_PATTERN}",
       fileExcludePatterns: '',
       pushProperties: '',
       pushDescription: 'Pushed from Jenkins',
