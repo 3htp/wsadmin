@@ -161,7 +161,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
             delivery: [
                 $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
                 pushVersion: '${BUILD_NUMBER}',
-                baseDir: '${workspace}',
+                baseDir: "${workspace}",
                 fileIncludePatterns: '',
                 fileExcludePatterns: '',
                 pushProperties: '',
