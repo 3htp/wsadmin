@@ -168,7 +168,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
                 baseDir: '${workspace}',
                 fileIncludePatterns: '*.ear',
                 fileExcludePatterns: '',
-                pushProperties: 'jenkins.server=Local\njenkins.reviewed=false',
+                pushProperties: '',
                 pushDescription: 'Pushed from Jenkins',
                 pushIncremental: false
             ]
