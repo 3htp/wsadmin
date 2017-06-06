@@ -167,7 +167,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
       $class: 'com.urbancode.jenkins.plugins.ucdeploy.ProcessHelper$CreateProcessBlock',
       processComponent: "${UCD_COMPONENT}"
      ],
-     deployVersions: "${UCD_COMPONENT}:${BUILD_ID}",
+     deployVersions: "${UCD_COMPONENT}:DEV${BUILD_ID}",
      deployOnlyChanged: false
     ]
    ])
