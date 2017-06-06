@@ -151,7 +151,7 @@ La idea es que o bien se escriba por código los pasos que debe ejecutar Urban C
 writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
 
    echo "[EXEC] - Despliegue sobre Urban Code Deploy ";
-   
+   /*
    step([$class: 'UCDeployPublisher',
         siteName: 'UrbanCode',
         component: [
@@ -170,7 +170,37 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
             ]
         ]
     ])
-   
+   */
+   step([
+    $class: 'UCDeployPublisher',
+    siteName: 'UrbanCode',
+    component: [
+     $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
+     componentName: "${UCD_COMPONENT}",
+     delivery: [
+      $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
+      pushVersion: "${BUILD_ID}",
+      baseDir: "${workspace}",
+      fileIncludePatterns: '',
+      fileExcludePatterns: '',
+      pushProperties: '',
+      pushDescription: 'Pushed from Jenkins',
+      pushIncremental: false
+     ]
+    ],
+    deploy: [
+     $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
+     deployApp: "${UCD_APPLICATION}",
+     deployEnv: "${UCD_ENVIRONMENT}",
+     deployProc: "${UCD_PROCESS}",
+     createProcess: [
+      $class: 'com.urbancode.jenkins.plugins.ucdeploy.ProcessHelper$CreateProcessBlock',
+      processComponent: "${UCD_COMPONENT}"
+     ],
+     deployVersions: "${UCD_COMPONENT}:${BUILD_ID}",
+     deployOnlyChanged: false
+    ]
+   ])
   }
  }
 }
