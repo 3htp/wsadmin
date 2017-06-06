@@ -152,12 +152,16 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
 
    echo "[EXEC] - Despliegue sobre Urban Code Deploy ";
    
-   step([
-    $class: 'UCDeployPublisher',
+   step([$class: 'UCDeployPublisher',
     siteName: 'https://urbancode.lramirez.cl:8443',
     component: [
      $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
      componentName: "${UCD_COMPONENT}",
+      createComponent: [
+                $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
+                componentTemplate: '',
+                componentApplication: "${UCD_COMPONENT}"
+            ],
      delivery: [
       $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
       pushVersion: "${BUILD_ID}",
