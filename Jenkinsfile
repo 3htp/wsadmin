@@ -153,41 +153,27 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
    echo "[EXEC] - Despliegue sobre Urban Code Deploy ";
    
    step([$class: 'UCDeployPublisher',
-    siteName: 'https://urbancode.lramirez.cl:8443',
-    component: [
-     $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
-     componentName: "${UCD_COMPONENT}",
-      createComponent: [
+        siteName: 'local',
+        component: [
+            $class: 'com.urbancode.jenkins.plugins.ucdeploy.VersionHelper$VersionBlock',
+            componentName: 'WASLRQ',
+            createComponent: [
                 $class: 'com.urbancode.jenkins.plugins.ucdeploy.ComponentHelper$CreateComponentBlock',
                 componentTemplate: '',
-                componentApplication: "${UCD_COMPONENT}"
+                componentApplication: 'AppWAS_LRQ'
             ],
-            /*
-     delivery: [
-      $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
-      pushVersion: "${BUILD_ID}",
-      baseDir: "${workspace}",
-      fileIncludePatterns: "${FILE_PATTERN}",
-      fileExcludePatterns: '',
-      pushProperties: '',
-      pushDescription: 'Pushed from Jenkins',
-      pushIncremental: false
-     ]
-    ],
-    deploy: [
-     $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeployHelper$DeployBlock',
-     deployApp: "${UCD_APPLICATION}",
-     deployEnv: "${UCD_ENVIRONMENT}",
-     deployProc: "${UCD_PROCESS}",
-     createProcess: [
-      $class: 'com.urbancode.jenkins.plugins.ucdeploy.ProcessHelper$CreateProcessBlock',
-      processComponent: "${UCD_COMPONENT}"
-     ],
-     deployVersions: "${UCD_COMPONENT}:${BUILD_ID}",
-     deployOnlyChanged: false
-     */
-    ]
-   ])
+            delivery: [
+                $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
+                pushVersion: '${BUILD_NUMBER}',
+                baseDir: '${workspace}',
+                fileIncludePatterns: '*.ear',
+                fileExcludePatterns: '',
+                pushProperties: 'jenkins.server=Local\njenkins.reviewed=false',
+                pushDescription: 'Pushed from Jenkins',
+                pushIncremental: false
+            ]
+        ]
+    ])
    
   }
  }
