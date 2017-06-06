@@ -149,7 +149,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
      componentName: "${UCD_COMPONENT}",
      delivery: [
       $class: 'com.urbancode.jenkins.plugins.ucdeploy.DeliveryHelper$Push',
-      pushVersion: "${BUILD_ID}",
+      pushVersion: "DEV${BUILD_ID}",
       baseDir: "${workspace}",
       fileIncludePatterns: "${FILE_PATTERN}",
       fileExcludePatterns: '',
@@ -167,7 +167,7 @@ writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
       $class: 'com.urbancode.jenkins.plugins.ucdeploy.ProcessHelper$CreateProcessBlock',
       processComponent: "${UCD_COMPONENT}"
      ],
-     deployVersions: "${UCD_COMPONENT}:DEV${BUILD_ID}",
+     deployVersions: "${UCD_COMPONENT}:${BUILD_ID}",
      deployOnlyChanged: false
     ]
    ])
