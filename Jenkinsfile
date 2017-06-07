@@ -110,7 +110,74 @@ La idea es que o bien se escriba por código los pasos que debe ejecutar Urban C
 
 */
 
-//writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
+/*writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
+*/
+
+writeFile file: 'deploy.sh', text: "<?xml version="1.0" encoding="UTF-8"?>
+<project name="Deploy" default="build-all" basedir=".">
+    <!-- global properties -->
+    <property name="hostName" value="localhost" />
+    <property name="connType" value="SOAP" />
+    <property name="port" value="8880" />
+    <property name="appName" value="HelloWorld_war" />
+    <property name="deployEar.dir" value="${basedir}" />
+    <property name="deployEar" value="HelloWorld.war" />
+    <property name="wasHome.dir" value="/opt/IBM/WebSphere/AppServer" />
+    <property name="user" value="wasadmin" />
+    <property name="password" value="wasadmin" />
+    <!-- <property name="ambiente" value="eibs_3htp" -->
+    
+    <!-- mbean declarations" -->
+    <taskdef name="wsUninstallApp" classname="com.ibm.websphere.ant.tasks.UninstallApplication" />
+    <taskdef name="wsInstallApp" classname="com.ibm.websphere.ant.tasks.InstallApplication" />
+    <taskdef name="wsStartApp" classname="com.ibm.websphere.ant.tasks.StartApplication" />
+    
+    <!-- Uninstall Target-->
+    <target name="uninstallAPP">
+        <wsUninstallApp application="${appName}"
+        jvmMaxMemory="512M"
+        wasHome="${wasHome.dir}"
+        conntype="${connType}"
+        port="${port}"
+        host="${hostName}"
+        user="${user}"
+        password="${password}"/>
+        
+    </target>
+    
+    <!-- installation Target-->
+    <target name="installAPP">
+        <echo message="Deployable EAR File found at: ${deployEar.dir}/${deployEar}" />
+        <wsInstallApp ear="${deployEar.dir}/${deployEar}"
+        jvmMaxMemory="1024M"
+        options="-appname ${appName} -contextroot /HelloWorld -MapWebModToVH {{ HelloWorld_Application HelloWorld.war,WEB-INF/web.xml default_host }}"
+        wasHome="${wasHome.dir}"
+        conntype="${connType}"
+        port="${port}"
+        host="${hostName}"
+        user="${user}"
+        password="${password}"
+        failonerror="true"/>
+    </target>
+    
+    
+    <target name="StartAPP">
+        <echo message="start EAR File found at: ${appName}" />
+        <wsStartApp
+        application="${appName}"
+        user="${user}"
+        password="${password}"
+        failonerror="${was_failonerror}"
+        washome="${wasHome.dir}" />
+   </target>
+    
+    
+    <target name="build-all" depends="uninstallAPP, installAPP,StartAPP">
+        <!--Main Target-->
+    </target>
+</project>"
+
+
 
    echo "[EXEC] - Despliegue sobre Urban Code Deploy ";
 
