@@ -100,7 +100,7 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
   }
 
  
-  stage("Despliegue") {
+  stage("Despliegue WAS") {
    echo "[EXEC] - Construyendo script de despliegue";
 
 /*
