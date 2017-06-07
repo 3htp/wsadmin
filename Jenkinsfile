@@ -113,7 +113,8 @@ La idea es que o bien se escriba por código los pasos que debe ejecutar Urban C
 /*writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
 */
 
-writeFile file: 'deploy.sh', text: """ <?xml version="1.0" encoding="UTF-8"?>
+writeFile file: 'deploy.sh', text: """
+<?xml version="1.0" encoding="UTF-8"?>
 <project name="Deploy" default="build-all" basedir=".">
     <!-- global properties -->
     <property name="hostName" value="localhost" />
@@ -175,7 +176,9 @@ writeFile file: 'deploy.sh', text: """ <?xml version="1.0" encoding="UTF-8"?>
     <target name="build-all" depends="uninstallAPP, installAPP,StartAPP">
         <!--Main Target-->
     </target>
-</project>"""
+</project>
+
+"""
 
 
 
