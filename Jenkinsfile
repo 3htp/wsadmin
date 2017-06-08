@@ -104,7 +104,7 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
    
    sh """cd source
    chmod +x conexion.sh
-   ./conexion.sh"""
+   ./conexion.sh "ls -l" """
    
 
   }
