@@ -112,8 +112,7 @@ La idea es que o bien se escriba por código los pasos que debe ejecutar Urban C
 
 /*writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
 */
-sh """
-HOST="45.79.82.119"
+sh """HOST="45.79.82.119"
 USER="root"
 PASS="3htp.com2017"
 CMD=$@
