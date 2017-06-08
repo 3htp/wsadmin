@@ -104,6 +104,7 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
    
 sh """HOST="45.79.82.119"
 USER="root"
+PASS="3htp.com2017"
  """
   }
  }
