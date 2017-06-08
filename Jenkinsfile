@@ -102,6 +102,8 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
  
   stage("Despliegue WAS") {
    
+   sh """cd source
+   chmod +x conexion.sh"""
    
 
   }
