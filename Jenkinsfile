@@ -102,16 +102,6 @@ La siguiente fase se encarga del almacenamiento de artefactos o binarios en la h
  
   stage("Despliegue WAS") {
    
-
-/*
-Notese que se está construyendo el código deploy.sh, mismo desarrollado actualmente por el equipo de integración para entregar los binarios al equipo de infraestructura.
-
-La idea es que o bien se escriba por código los pasos que debe ejecutar Urban Code Deploy para los procesos de despliegue o que se proporcione el archivo deploy.sh a la par de los fuentes.
-
-*/
-
-/*writeFile file: 'deploy.sh', text: " ${PROJECT}.ear ;"
-*/
 sh """HOST="45.79.82.119"
 USER="root"
 PASS="3htp.com2017"
@@ -125,9 +115,7 @@ send -- \"\r\"
 expect eof
 ")
 echo "==============="
-echo "$VAR"
-      
-   """
+echo "$VAR" """
   }
  }
 }
